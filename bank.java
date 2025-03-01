@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 public class bank 
@@ -30,6 +29,18 @@ public class bank
             tax=t;
             hist=new ArrayList<>();
         }
+        public int getkey()
+        {
+            return key;
+        }
+        public String getoinfo()//get owner informashon
+        {
+            return "name : "+on+"\naddres : "+oa;
+        }
+        public date getopeningdate()
+        {
+            return op;
+        }
         public void settax(int n)
         {
             tax=n;
@@ -60,13 +71,16 @@ public class bank
         }
         public void Withdraw(double n)
         {
-            if(n<balence)
+            date t=new date();
+            if(n<=balence)
             {
                 balence=balence-n;
+                hist.add(new history(t,"Withdraw",ID,n,0));
             }
             else
             {
                 System.out.println("you do not have "+n+" DA");
+                System.out.println("you have "+balence+" DA");
             }
         }
         public boolean checkownership(int i,int p)
@@ -84,6 +98,26 @@ public class bank
                 loan=n;
                 date t=new date();
                 hist.add(new history(t,"Take a loan",ID,n,0));
+            }
+        }
+        public void paytheloan(int n)
+        {
+            if(loan!=0)
+            {
+                date t=new date();
+                loan=loan-n;
+                if(loan<0)
+                {
+                    loan=loan*(-1);
+                    balence=balence+loan;
+                    hist.add(new history(t,"pay the loan",ID,n-loan,0));
+                    hist.add(new history(t,"Deposit",ID,loan,0));
+                    loan=0;
+                }
+                else
+                {
+                    hist.add(new history(t,"pay the loan",ID,n-loan,0));
+                }
             }
         }
     }
