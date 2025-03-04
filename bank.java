@@ -4,6 +4,7 @@ public class bank
 {
     public String name;
     public String location;
+    private ArrayList<account> accounts=new ArrayList<>();
     public class account
     {
         private int password;
@@ -119,6 +120,36 @@ public class bank
                     hist.add(new history(t,"pay the loan",ID,n-loan,0));
                 }
             }
+        }
+    }
+    private int getindex(int id,int pass)
+    {
+        int i;
+        for(i=0;i<accounts.size();i++)
+        {
+            if(accounts.get(i).checkownership(id,pass))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public void dipos(double n,int id,int pass)
+    {
+        int y;
+        y=getindex(id,pass);
+        if(y!=-1)
+        {
+            accounts.get(y).Deposit(n);
+        }
+    }
+    public void withd(double n,int id,int pass)
+    {
+        int y;
+        y=getindex(id,pass);
+        if(y!=-1)
+        {
+            accounts.get(y).Withdraw(n);
         }
     }
 }
