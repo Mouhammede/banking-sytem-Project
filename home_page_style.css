@@ -1,0 +1,34 @@
+#sidebar{
+    height: 1000px;
+    width: 130px;
+    margin: 0px;
+    background-color: rgb(223, 224, 224);
+    margin: 0px;
+    align-items: center;
+    text-align: center;
+}
+#g{
+    color: rgb(92, 168, 92);
+    font-size: 21px;
+}
+.b{
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(223, 224, 224);
+    display: block;
+    width: 100%;
+    transition-duration: 500ms;
+    transition-property: background;
+    transition-timing-function: cubic-bezier(0.55, 0.09, 0.68, 0.53);
+}
+.b:hover{
+    background-color: rgb(176, 179, 179);
+}
+#ph{
+    height: 70px;
+    width: 100px;
+    
+}
+a{
+    text-decoration: none;
+}
